@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ka">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NEWS — Interpressnews</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0f1720;
+--card:#0b1220;
+--accent:#0b76ef;
+--muted:#bfc9d9;
+font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+background: linear-gradient(180deg, #071026 0%, #0f1720 100%);
+color: #e6eef8;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:2rem;
+-webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+width:100%;
+max-width:900px;
+text-align:center;
+}
+
+.title {
+font-size:clamp(2.5rem,7vw,6rem);
+letter-spacing:0.12em;
+font-weight:800;
+margin:0 0 1rem;
+color:#ffffff;
+text-transform:uppercase;
+}
+
+.subtitle {
+color:var(--muted);
+margin:0 0 2rem;
+font-weight:500;
+}
+
+.card{
+background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+border:1px solid rgba(255,255,255,0.04);
+border-radius:12px;
+padding:2rem;
+text-align:left;
+box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+}
+
+article h2{
+margin:0 0 .6rem;
+font-size:1.25rem;
+color:#fff;
+}
+article p{margin:0 0 1rem;color:var(--muted);line-height:1.6}
+.meta{font-size:0.85rem;color:#9fb0d0;margin-bottom:1rem}
+.source{display:inline-block;padding:.35rem .6rem;border-radius:6px;background:rgba(11,118,239,0.12);color:var(--accent);font-weight:600}
+@media (max-width:600px){
+.card{padding:1rem}
+.subtitle{font-size:.95rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="title">NEWS</div>
+<div class="subtitle">Interpressnews — რეგიონული საინფორმაციო განყოფილება</div>
+
+<div class="card" role="article" aria-labelledby="art-title">
+<div class="meta">
+<span class="source">Interpressnews</span>
+&nbsp;•&nbsp;
+<time datetime="<?= new Date().toISOString ? new Date().toISOString().slice(0,10) : '' ?>" id="pubdate">გუშინ</time>
+</div>
+
+<article>
+<h2 id="art-title">ვარკეთილში ახალგაზრდა მამაკაცი უგონო მდგომარეობაში იპოვეს</h2>
+
+<p>გუშინ ვარკეთილში ახალგაზრდა მამაკაცი იპოვეს უგონო მდგომარეობაში — ინფორმაციას <strong>Interpressnews</strong> ავრცელებს.</p>
+
+<p>შემთხვევის ადგილზე მობილიზებული იყო სასწრაფო-სამედიცინო დახმარების ჯგუფი, რომელმაც მამაკაცს პირველადი დახმარება აღმოუჩინა. მედიკოსების ცნობით, მას ადგილზე გაეწია დახმარება და გამოუწვევია ჰოსპიტალიზაცია შემდგომი შემოწმებისთვის.</p>
+
+<p>სამედიცინო პერსონალის ინფორმაციით, მამაკაცის სიცოცხლეს საფრთხე ამჟამად არ ემუქრება და მისი მდგომარეობა სტაბილურია. შინაგან საქმეთა სამინისტრო მომხდართან დაკავშირებით საქმის შემოწმებას ახორციელებს, რათა დადგინდეს ინციდენტის მიზეზი.</p>
+</article>
+</div>
+</div>
+
+<script>
+// small enhancement: replace "გუშინ" with actual date (yesterday) in Georgian format
+(function(){
+try{
+const pubEl = document.getElementById('pubdate');
+const now = new Date();
+const y = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+const months = ['იანვ', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'];
+const formatted = y.getDate() + ' ' + months[y.getMonth()] + ' ' + y.getFullYear();
+pubEl.textContent = formatted;
+pubEl.setAttribute('datetime', y.toISOString().slice(0,10));
+}catch(e){}
+})();
+</script>
+</body>
+</html>
